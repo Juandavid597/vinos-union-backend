@@ -10,24 +10,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "product")
-public class Producto {
+@Table(name = "ancheta")
+public class Ancheta {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,10 +37,6 @@ public class Producto {
     @Column(name = "precio", nullable = false, precision = 10, scale = 2)
     private BigDecimal precio;
 
-    @Min(value = 0, message = "El stock no puede ser negativo")
-    @Column(name = "stock", nullable = false, columnDefinition = "integer default 0")
-    private Integer stock = 0;
-
     @NotNull(message = "El campo disponible es obligatorio")
     @Column(name = "disponible", nullable = false, columnDefinition = "boolean default true")
     private Boolean disponible = true;
@@ -57,15 +44,5 @@ public class Producto {
     @CreationTimestamp
     @Column(name = "fecha_registro", nullable = false, updatable = false)
     private LocalDateTime fechaRegistro;
-
-    @NotNull(message = "La categoria es obligatoria")
-    @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
-    private Categoria categoria;
-
-    @NotNull(message = "La presentacion es obligatoria")
-    @ManyToOne
-    @JoinColumn(name = "presentacion_id", nullable = false)
-    private Presentacion presentacion;
 
 }
