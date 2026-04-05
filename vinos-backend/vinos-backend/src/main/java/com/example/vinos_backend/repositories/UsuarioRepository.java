@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.vinos_backend.entities.Usuario;
 
-public interface UsuarioRepository extends JpaRepository<Long, Usuario>{
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     
 }
