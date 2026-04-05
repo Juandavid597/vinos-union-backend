@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.vinos_backend.entities.Ancheta;
 
-public interface AnchetaRepository extends JpaRepository<Long, Ancheta> {
+public interface AnchetaRepository extends JpaRepository<Ancheta, Long> {
     
 }
